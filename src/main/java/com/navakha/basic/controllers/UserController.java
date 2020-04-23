@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.navakha.basic.Entities.Likes;
 import com.navakha.basic.Entities.Post;
 import com.navakha.basic.Entities.UserDetails;
 import com.navakha.basic.response.UserDetailsResponse;
@@ -41,7 +42,23 @@ public class UserController {
 	}
 	@GetMapping("samplePost")
 	public Post getPostStubs() {
-		Post post =new Post();
+		return new Post() {
+			private int wishes=10000;
+
+			public int getWishes() {
+				return wishes;
+			}
+
+			public void setWishes(int wishes) {
+				this.wishes = wishes;
+			}
+		};
+		
+		
+	}
+	@GetMapping("samplePosts")
+	public Likes getPostStubss() {
+		Likes post=new Likes();
 		
 		return post;
 	}

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.navakha.basic.Entities.Post;
@@ -30,7 +31,8 @@ public class PostsController {
 	@Autowired
 	PostService postService;
 
-	@GetMapping(path = "posts/{userToken}")
+	@GetMapping(path = "posts/{userToken}" )
+	@ResponseBody
 	public BaseResponse getPosts(@PathVariable("userToken") String userToken) {
 		List<UserDetails> userList = userDetailsRepository.findByUserToken(userToken);
 		if (userList.size() == 0) {
